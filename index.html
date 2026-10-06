@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 26.2.6.3 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.5in 11in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "Noto Sans Mono CJK SC", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot; class=&quot;scroll-smooth&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Mustapha Chemlal | Técnico de Selección Senior IT&lt;/title&gt;
+    &lt;!-- Tailwind CSS CDN --&gt;
+    &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+    &lt;!-- Google Fonts --&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;!-- FontAwesome Icons --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css&quot;&gt;
+    &lt;!-- html2pdf.js for exporting PDF --&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B192C',
+                            900: '#070F1E',
+                            950: '#030712',
+                        },
+                        brand: {
+                            light: '#38BDF8',
+                            DEFAULT: '#0284C7',
+                            dark: '#0369A1',
+                            accent: '#6366F1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['&quot;Plus Jakarta Sans&quot;', 'sans-serif'],
+                        serif: ['&quot;Playfair Display&quot;', 'serif'],
+                    }
+                }
+            }
+        }
+    &lt;/script&gt;
+
+    &lt;style&gt;
+        /* Custom scrollbar and glassmorphism styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        /* Print styling rules for PDF generation */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+                background: white !important;
+                color: #1e293b !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand selection:text-white min-h-screen flex flex-col justify-between&quot;&gt;
+
+    &lt;!-- Navigation Bar --&gt;
+    &lt;header class=&quot;sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 no-print transition-all duration-300&quot; id=&quot;mainHeader&quot;&gt;
+        &lt;div class=&quot;max-w-7xl mx-auto px-4 sm:px-6 lg:px-8&quot;&gt;
+            &lt;div class=&quot;flex items-center justify-between h-20&quot;&gt;
+                &lt;!-- Brand / Name Logo --&gt;
+                &lt;a href=&quot;#inicio&quot; class=&quot;flex items-center gap-3 group&quot;&gt;
+                    &lt;div class=&quot;w-10 h-10 rounded-xl bg-gradient-to-tr from-brand to-brand-accent flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand/20 group-hover:scale-105 transition-transform duration-300&quot;&gt;
+                        MC
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;span class=&quot;text-lg font-bold tracking-tight text-white group-hover:text-brand-light transition-colors&quot;&gt;Mustapha Chemlal&lt;/span&gt;
+                        &lt;span class=&quot;block text-xs text-slate-400 font-medium&quot;&gt;Técnico de Selección Senior IT&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/a&gt;
+
+                &lt;!-- Desktop Navigation Links --&gt;
+                &lt;nav class=&quot;hidden md:flex items-center space-x-1&quot;&gt;
+                    &lt;a href=&quot;#inicio&quot; class=&quot;nav-link text-slate-300 hover:text-white hover:bg-slate-800/60 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200&quot;&gt;
+                        &lt;i class=&quot;fa-solid fa-user-tie text-brand-light mr-2&quot;&gt;&lt;/i&gt;Inicio / Acerca de mí
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#cv&quot; class=&quot;nav-link text-slate-300 hover:text-white hover:bg-slate-800/60 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200&quot;&gt;
+                        &lt;i class=&quot;fa-solid fa-file-invoice text-brand-light mr-2&quot;&gt;&lt;/i&gt;Currículum Vitae
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#herramientas-contacto&quot; class=&quot;nav-link text-slate-300 hover:text-white hover:bg-slate-800/60 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200&quot;&gt;
+                        &lt;i class=&quot;fa-solid fa-toolbox text-brand-light mr-2&quot;&gt;&lt;/i&gt;Herramientas &amp; Contacto
+                    &lt;/a&gt;
+                &lt;/nav&gt;
+
+                &lt;!-- Action Button --&gt;
+                &lt;div class=&quot;hidden md:flex items-center gap-3&quot;&gt;
+                    &lt;a href=&quot;#contacto&quot; class=&quot;bg-gradient-to-r from-brand to-brand-accent hover:opacity-95 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-lg shadow-brand/25 transition-all duration-300 hover:-translate-y-0.5&quot;&gt;
+                        &lt;i class=&quot;fa-regular fa-paper-plane mr-2&quot;&gt;&lt;/i&gt;Contactar
+                    &lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Mobile Menu Button --&gt;
+                &lt;div class=&quot;md:hidden flex items-center&quot;&gt;
+                    &lt;button id=&quot;mobileMenuBtn&quot; type=&quot;button&quot; class=&quot;text-slate-400 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-slate-800&quot; aria-label=&quot;Abrir menú&quot;&gt;
+                        &lt;i class=&quot;fa-solid fa-bars text-xl&quot; id=&quot;menuIcon&quot;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Mobile Navigation Menu --&gt;
+        &lt;div class=&quot;md:hidden hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-2&quot; id=&quot;mobileMenu&quot;&gt;
+            &lt;a href=&quot;#inicio&quot; class=&quot;mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white&quot;&gt;
+                &lt;i class=&quot;fa-solid fa-user-tie text-brand-light mr-3&quot;&gt;&lt;/i&gt;Inicio / Acerca de mí
+            &lt;/a&gt;
+            &lt;a href=&quot;#cv&quot; class=&quot;mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white&quot;&gt;
+                &lt;i class=&quot;fa-solid fa-file-invoice text-brand-light mr-3&quot;&gt;&lt;/i&gt;Currículum Vitae
+            &lt;/a&gt;
+            &lt;a href=&quot;#herramientas-contacto&quot; class=&quot;mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white&quot;&gt;
+                &lt;i class=&quot;fa-solid fa-toolbox text-brand-light mr-3&quot;&gt;&lt;/i&gt;Herramientas &amp; Contacto
+            &lt;/a&gt;
+            &lt;div class=&quot;pt-2&quot;&gt;
+                &lt;a href=&quot;#contacto&quot; class=&quot;mobile-link block text-center bg-brand text-white px-4 py-2.5 rounded-lg font-semibold text-sm&quot;&gt;
+                    &lt;i class=&quot;fa-regular fa-paper-plane mr-2&quot;&gt;&lt;/i&gt;Contactar ahora
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Main Content Wrapper --&gt;
+    &lt;main class=&quot;flex-grow&quot;&gt;
+
+        &lt;!-- SECCIÓN 1: INICIO / ACERCA DE MÍ --&gt;
+        &lt;section id=&quot;inicio&quot; class=&quot;relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-slate-800/50&quot;&gt;
+            &lt;!-- Background Glow Effects --&gt;
+            &lt;div class=&quot;absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand/15 blur-[120px] rounded-full pointer-events-none&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;absolute top-1/3 right-10 w-[300px] h-[300px] bg-brand-accent/10 blur-[100px] rounded-full pointer-events-none&quot;&gt;&lt;/div&gt;
+
+            &lt;div class=&quot;max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10&quot;&gt;
+                &lt;div class=&quot;grid lg:grid-cols-12 gap-12 items-center&quot;&gt;
+                    
+                    &lt;!-- Left Hero Content --&gt;
+                    &lt;div class=&quot;lg:col-span-7 text-center lg:text-left space-y-6&quot;&gt;
+                        &lt;div class=&quot;inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/10 border border-brand/30 text-brand-light text-xs font-semibold uppercase tracking-wider&quot;&gt;
+                            &lt;span class=&quot;w-2 h-2 rounded-full bg-emerald-400 animate-pulse&quot;&gt;&lt;/span&gt;
+                            Disponible para Proyectos y Selección IT
+                        &lt;/div&gt;
+
+                        &lt;h1 class=&quot;text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight&quot;&gt;
+                            Mustapha Chemlal
+                            &lt;span class=&quot;block text-transparent bg-clip-text bg-gradient-to-r from-brand-light via-sky-300 to-brand-accent text-3xl sm:text-4xl lg:text-5xl font-serif italic mt-2&quot;&gt;
+                                Técnico de Selección Senior IT
+                            &lt;/span&gt;
+                        &lt;/h1&gt;
+
+                        &lt;p class=&quot;text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-light&quot;&gt;
+                            Especialista en Atracción de Talento Tecnológico con más de 6 años de trayectoria conectando profesionales estratégicos de software, ciberseguridad y cloud con empresas líderes en España y Latinoamérica.
+                        &lt;/p&gt;
+
+                        &lt;!-- Quick Badges --&gt;
+                        &lt;div class=&quot;flex flex-wrap justify-center lg:justify-start gap-3 pt-2&quot;&gt;
+                            &lt;span class=&quot;inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-earth-americas text-brand-light&quot;&gt;&lt;/i&gt; Reclutamiento ESP / LATAM
+                            &lt;/span&gt;
+                            &lt;span class=&quot;inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-robot text-brand-light&quot;&gt;&lt;/i&gt; AI-Powered Recruiting
+                            &lt;/span&gt;
+                            &lt;span class=&quot;inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-handshake text-brand-light&quot;&gt;&lt;/i&gt; IT Headhunting
+                            &lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- CTA Group --&gt;
+                        &lt;div class=&quot;flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4&quot;&gt;
+                            &lt;a href=&quot;#cv&quot; class=&quot;w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand to-brand-dark hover:from-brand-light hover:to-brand text-white font-bold text-center shadow-lg shadow-brand/20 transition-all duration-300 hover:scale-[1.02]&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-file-pdf mr-2&quot;&gt;&lt;/i&gt; Ver CV Completo
+                            &lt;/a&gt;
+                            &lt;a href=&quot;#contacto&quot; class=&quot;w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-center transition-all duration-300&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-address-book mr-2&quot;&gt;&lt;/i&gt; Contacto Directo
+                            &lt;/a&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Right Card Showcase --&gt;
+                    &lt;div class=&quot;lg:col-span-5&quot;&gt;
+                        &lt;div class=&quot;glass-card p-8 rounded-3xl relative shadow-2xl border border-slate-800/80&quot;&gt;
+                            &lt;!-- Visual Badge --&gt;
+                            &lt;div class=&quot;flex items-center justify-between pb-6 border-b border-slate-800&quot;&gt;
+                                &lt;div class=&quot;flex items-center gap-3&quot;&gt;
+                                    &lt;div class=&quot;w-12 h-12 rounded-2xl bg-brand/20 border border-brand/40 flex items-center justify-center text-brand-light text-2xl&quot;&gt;
+                                        &lt;i class=&quot;fa-solid fa-users-gear&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;div&gt;
+                                        &lt;h3 class=&quot;text-white font-bold text-base&quot;&gt;Perfil Profesional&lt;/h3&gt;
+                                        &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Human Resources &amp; Technology&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;span class=&quot;bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs px-2.5 py-1 rounded-full font-medium&quot;&gt;Activo&lt;/span&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Highlights List --&gt;
+                            &lt;ul class=&quot;mt-6 space-y-4&quot;&gt;
+                                &lt;li class=&quot;flex items-start gap-3.5&quot;&gt;
+                                    &lt;div class=&quot;w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5&quot;&gt;
+                                        &lt;i class=&quot;fa-solid fa-award&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;span class=&quot;text-slate-300 text-sm leading-snug&quot;&gt;
+                                        &lt;strong class=&quot;text-white font-semibold&quot;&gt;+6 años de experiencia&lt;/strong&gt; reclutando a profesionales de tecnología altamente cualificados.
+                                    &lt;/span&gt;
+                                &lt;/li&gt;
+                                &lt;li class=&quot;flex items-start gap-3.5&quot;&gt;
+                                    &lt;div class=&quot;w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5&quot;&gt;
+                                        &lt;i class=&quot;fa-solid fa-globe&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;span class=&quot;text-slate-300 text-sm leading-snug&quot;&gt;
+                                        Selección de talento estratégica en &lt;strong class=&quot;text-white font-semibold&quot;&gt;España y diversos países de LATAM&lt;/strong&gt;.
+                                    &lt;/span&gt;
+                                &lt;/li&gt;
+                                &lt;li class=&quot;flex items-start gap-3.5&quot;&gt;
+                                    &lt;div class=&quot;w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5&quot;&gt;
+                                        &lt;i class=&quot;fa-solid fa-people-arrows&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;span class=&quot;text-slate-300 text-sm leading-snug&quot;&gt;
+                                        Sólida gestión de relaciones con &lt;strong class=&quot;text-white font-semibold&quot;&gt;Hiring Managers y candidatos&lt;/strong&gt; en todo el ciclo.
+                                    &lt;/span&gt;
+                                &lt;/li&gt;
+                                &lt;li class=&quot;flex items-start gap-3.5&quot;&gt;
+                                    &lt;div class=&quot;w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5&quot;&gt;
+                                        &lt;i class=&quot;fa-solid fa-bolt&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;span class=&quot;text-slate-300 text-sm leading-snug&quot;&gt;
+                                        Rápida adaptación a las necesidades dinámicas y metas críticas del negocio.
+                                    &lt;/span&gt;
+                                &lt;/li&gt;
+                                &lt;li class=&quot;flex items-start gap-3.5&quot;&gt;
+                                    &lt;div class=&quot;w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5&quot;&gt;
+                                        &lt;i class=&quot;fa-solid fa-list-check&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;span class=&quot;text-slate-300 text-sm leading-snug&quot;&gt;
+                                        Gestión simultánea de &lt;strong class=&quot;text-white font-semibold&quot;&gt;múltiples procesos de selección&lt;/strong&gt; alcanzando metas exitosas.
+                                    &lt;/span&gt;
+                                &lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- SECCIÓN 2: CURRÍCULUM VITAE --&gt;
+        &lt;section id=&quot;cv&quot; class=&quot;py-20 border-b border-slate-800/50 bg-slate-900/30&quot;&gt;
+            &lt;div class=&quot;max-w-6xl mx-auto px-4 sm:px-6 lg:px-8&quot;&gt;
+                
+                &lt;!-- Section Header &amp; Download Action --&gt;
+                &lt;div class=&quot;flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12&quot;&gt;
+                    &lt;div&gt;
+                        &lt;div class=&quot;inline-flex items-center gap-2 text-brand-light text-xs font-semibold uppercase tracking-widest mb-1&quot;&gt;
+                            &lt;i class=&quot;fa-solid fa-file-code&quot;&gt;&lt;/i&gt; Trayectoria Profesional
+                        &lt;/div&gt;
+                        &lt;h2 class=&quot;text-3xl sm:text-4xl font-extrabold text-white&quot;&gt;
+                            Currículum Vitae: &lt;span class=&quot;text-brand-light font-serif italic&quot;&gt;Mustapha Chemlal&lt;/span&gt;
+                        &lt;/h2&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;no-print&quot;&gt;
+                        &lt;button onclick=&quot;downloadPDF()&quot; id=&quot;downloadPdfBtn&quot; class=&quot;inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-900/30 transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer&quot;&gt;
+                            &lt;i class=&quot;fa-solid fa-file-pdf text-xl&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;Descargar CV de Mustapha Chemlal&lt;/span&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- CV Container Element (Target for html2pdf) --&gt;
+                &lt;div id=&quot;cv-content&quot; class=&quot;space-y-10 bg-slate-900/80 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-xl print-shadow-none&quot;&gt;
+                    
+                    &lt;!-- CV Header for PDF Print Only --&gt;
+                    &lt;div class=&quot;hidden print-only pb-6 mb-6 border-b border-slate-300&quot;&gt;
+                        &lt;h1 class=&quot;text-2xl font-bold text-slate-900&quot;&gt;Mustapha Chemlal&lt;/h1&gt;
+                        &lt;p class=&quot;text-sm text-slate-700 font-semibold&quot;&gt;Técnico de Selección Senior IT&lt;/p&gt;
+                        &lt;p class=&quot;text-xs text-slate-600 mt-1&quot;&gt;Email: chemlalmustafa1@gmail.com | LinkedIn: linkedin.com/in/mustafá-especialista-rrhh-it&lt;/p&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- EXPERIENCIA PROFESIONAL --&gt;
+                    &lt;div&gt;
+                        &lt;div class=&quot;flex items-center gap-3 mb-8 border-b border-slate-800 pb-3&quot;&gt;
+                            &lt;div class=&quot;w-10 h-10 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-briefcase text-lg&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;h3 class=&quot;text-2xl font-bold text-white tracking-tight&quot;&gt;Experiencia Profesional&lt;/h3&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&quot;space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-5 before:w-0.5 before:bg-slate-800&quot;&gt;
+                            
+                            &lt;!-- Job Position 1 --&gt;
+                            &lt;div class=&quot;relative pl-10 sm:pl-12 group&quot;&gt;
+                                &lt;div class=&quot;absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-brand border-4 border-slate-950 group-hover:scale-125 transition-transform&quot;&gt;&lt;/div&gt;
+                                
+                                &lt;div class=&quot;bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors&quot;&gt;
+                                    &lt;div class=&quot;flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3&quot;&gt;
+                                        &lt;div&gt;
+                                            &lt;h4 class=&quot;text-xl font-bold text-white&quot;&gt;IT Recruitment Consultant &lt;span class=&quot;text-brand-light text-sm font-normal&quot;&gt;(Remoto)&lt;/span&gt;&lt;/h4&gt;
+                                            &lt;p class=&quot;text-slate-300 font-medium text-sm&quot;&gt;Empresa Española (Consultora RRHH IT)&lt;/p&gt;
+                                        &lt;/div&gt;
+                                        &lt;span class=&quot;inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand/10 text-brand-light border border-brand/20 text-xs font-semibold w-fit&quot;&gt;
+                                            &lt;i class=&quot;fa-regular fa-calendar&quot;&gt;&lt;/i&gt; Feb 2022 – Actualidad
+                                        &lt;/span&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;ul class=&quot;space-y-2.5 text-slate-300 text-sm leading-relaxed mb-4&quot;&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Liderazgo y Coordinación:&lt;/strong&gt; Coordinación, supervisión y formación de un pequeño equipo de Técnicos de Selección IT.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Gestión de Portales:&lt;/strong&gt; Cargar candidaturas a los portales de los clientes, realizando su seguimiento exhaustivo.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Ofertas de Empleo:&lt;/strong&gt; Redacción, publicación y gestión de ofertas laborales en LinkedIn Recruiter e Infojobs.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Análisis Crítico:&lt;/strong&gt; Coordinación de reuniones semanales proponiendo evaluaciones y análisis críticos de avance.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Reclutamiento de Perfiles IT:&lt;/strong&gt; Ciberseguridad, Robótica, Cloud (Pública/Privada), Big Data, Blockchain, Business Intelligence (BI), Redes, Sistemas, Desarrollo (Backend/Frontend)...&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;IA Aplicada a Selección:&lt;/strong&gt; Uso de asistentes de IA (ChatGPT, Google Gemini y Microsoft Copilot) para optimizar tareas operativas.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Sourcing Multicanal:&lt;/strong&gt; Búsqueda y Selección estratégica de profesionales IT principalmente en LinkedIn, Infojobs y TicJobs.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Entrevistas Técnicas:&lt;/strong&gt; Evaluación de competencias mediante videollamadas en Teams, Zoom, Jitsi y Skype.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Contratación y LOPD:&lt;/strong&gt; Negociación de condiciones y solicitud de documentación oficial garantizando estricto cumplimiento LOPD/RGPD.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Reporting:&lt;/strong&gt; Elaboración de informes detallados en Microsoft Excel y almacenamiento/gestión de datos en Google Sheets.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                    &lt;/ul&gt;
+
+                                    &lt;!-- Collaborations --&gt;
+                                    &lt;div class=&quot;pt-3 border-t border-slate-800/80&quot;&gt;
+                                        &lt;p class=&quot;text-xs text-slate-400 font-semibold mb-2&quot;&gt;COLABORACIÓN Y SECTORES:&lt;/p&gt;
+                                        &lt;p class=&quot;text-xs text-slate-300&quot;&gt;
+                                            &lt;strong class=&quot;text-slate-200&quot;&gt;Partners:&lt;/strong&gt; Accenture, Minsait, Ayesa, EY, Grupo GFT, entre otros. &lt;br&gt;
+                                            &lt;strong class=&quot;text-slate-200&quot;&gt;Sectores de clientes:&lt;/strong&gt; Seguros, Aeroespacial, Sanitario, Financiero...
+                                        &lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Job Position 2 --&gt;
+                            &lt;div class=&quot;relative pl-10 sm:pl-12 group&quot;&gt;
+                                &lt;div class=&quot;absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand transition-colors&quot;&gt;&lt;/div&gt;
+                                
+                                &lt;div class=&quot;bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors&quot;&gt;
+                                    &lt;div class=&quot;flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3&quot;&gt;
+                                        &lt;div&gt;
+                                            &lt;h4 class=&quot;text-xl font-bold text-white&quot;&gt;IT Recruiter &amp; IT Support Technician (L1)&lt;/h4&gt;
+                                            &lt;p class=&quot;text-slate-300 font-medium text-sm&quot;&gt;Empresa Española (Consultora RRHH IT)&lt;/p&gt;
+                                        &lt;/div&gt;
+                                        &lt;span class=&quot;inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold w-fit&quot;&gt;
+                                            &lt;i class=&quot;fa-regular fa-calendar&quot;&gt;&lt;/i&gt; Feb 2019 – Ene 2022
+                                        &lt;/span&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;ul class=&quot;space-y-2 text-slate-300 text-sm leading-relaxed&quot;&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Búsqueda y Selección activa de talento tecnológico en LinkedIn, TicJob e Infojobs.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Reclutamiento especializado en Desarrollo (Backend/Frontend), SAP, Marketing Digital, Analítica Digital, Seguridad (Ciberseguridad), Sistemas, Cloud, Big Data y Redes.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Coordinación de entrevistas técnicas por Microsoft Teams, Zoom, Jitsi, Skype y Discord.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Negociación, gestión de expedientes de contratación LOPD e informes analíticos en Excel.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;&lt;strong&gt;Soporte Técnico N1:&lt;/strong&gt; Atención e incidencias N1, configuración, reactivación, reparación y gestión de cuentas Windows, O365 y Antivirus.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Soporte y mantenimiento remoto a usuarios mediante TeamViewer.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Job Position 3 --&gt;
+                            &lt;div class=&quot;relative pl-10 sm:pl-12 group&quot;&gt;
+                                &lt;div class=&quot;absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand transition-colors&quot;&gt;&lt;/div&gt;
+                                
+                                &lt;div class=&quot;bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors&quot;&gt;
+                                    &lt;div class=&quot;flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3&quot;&gt;
+                                        &lt;div&gt;
+                                            &lt;h4 class=&quot;text-xl font-bold text-white&quot;&gt;Operador Telefónico&lt;/h4&gt;
+                                            &lt;p class=&quot;text-slate-300 font-medium text-sm&quot;&gt;Vodafone&lt;/p&gt;
+                                        &lt;/div&gt;
+                                        &lt;span class=&quot;inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold w-fit&quot;&gt;
+                                            &lt;i class=&quot;fa-regular fa-calendar&quot;&gt;&lt;/i&gt; Sept 2017 – Abr 2018
+                                        &lt;/span&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;ul class=&quot;space-y-2 text-slate-300 text-sm leading-relaxed&quot;&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Recepción de llamadas y atención al cliente corporativo mediante SoftPhone X-Lite.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Definición del catálogo de terminales móviles del segmento y roadmap de productos a lanzar con su propuesta de valor.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                        &lt;li class=&quot;flex items-start gap-2&quot;&gt;
+                                            &lt;i class=&quot;fa-solid fa-angle-right text-brand-light mt-1 text-xs&quot;&gt;&lt;/i&gt;
+                                            &lt;span&gt;Registro de datos en Google Drive, Dropbox y Microsoft Excel. Envío de documentación detallada vía Microsoft Outlook.&lt;/span&gt;
+                                        &lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- FORMACIÓN ACADÉMICA Y IDIOMAS --&gt;
+                    &lt;div class=&quot;grid md:grid-cols-2 gap-8 pt-6 border-t border-slate-800&quot;&gt;
+                        &lt;!-- Academic Formation --&gt;
+                        &lt;div&gt;
+                            &lt;div class=&quot;flex items-center gap-3 mb-6&quot;&gt;
+                                &lt;div class=&quot;w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light&quot;&gt;
+                                    &lt;i class=&quot;fa-solid fa-graduation-cap&quot;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                                &lt;h3 class=&quot;text-xl font-bold text-white&quot;&gt;Formación Académica&lt;/h3&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;space-y-4&quot;&gt;
+                                &lt;div class=&quot;p-4 rounded-xl bg-slate-950/60 border border-slate-800&quot;&gt;
+                                    &lt;span class=&quot;text-xs text-brand-light font-bold&quot;&gt;2014 – 2017&lt;/span&gt;
+                                    &lt;h4 class=&quot;text-white font-bold text-base mt-1&quot;&gt;Licenciatura en Estudios Hispánicos&lt;/h4&gt;
+                                    &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Université Mohammed Premier Oujda&lt;/p&gt;
+                                    &lt;p class=&quot;text-slate-300 text-xs mt-2 italic&quot;&gt;(Especializado en el Análisis Semiótico de Textos Literarios)&lt;/p&gt;
+                                &lt;/div&gt;
+
+                                &lt;div class=&quot;p-4 rounded-xl bg-slate-950/60 border border-slate-800&quot;&gt;
+                                    &lt;span class=&quot;text-xs text-brand-light font-bold&quot;&gt;2001 – 2013&lt;/span&gt;
+                                    &lt;h4 class=&quot;text-white font-bold text-base mt-1&quot;&gt;Bachillerato (Ciencia de Vida y Tierra)&lt;/h4&gt;
+                                    &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Residencia De Estudiantes De Melilla&lt;/p&gt;
+                                    &lt;p class=&quot;text-slate-300 text-xs mt-2&quot;&gt;Geología / Ciencias de la Tierra, General.&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- Languages --&gt;
+                        &lt;div&gt;
+                            &lt;div class=&quot;flex items-center gap-3 mb-6&quot;&gt;
+                                &lt;div class=&quot;w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light&quot;&gt;
+                                    &lt;i class=&quot;fa-solid fa-language&quot;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                                &lt;h3 class=&quot;text-xl font-bold text-white&quot;&gt;Idiomas&lt;/h3&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;space-y-4&quot;&gt;
+                                &lt;div class=&quot;p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between&quot;&gt;
+                                    &lt;div&gt;
+                                        &lt;h4 class=&quot;text-white font-bold text-base&quot;&gt;Español&lt;/h4&gt;
+                                        &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Competencia bilingüe o nativa&lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;span class=&quot;px-2.5 py-1 rounded bg-brand/20 text-brand-light text-xs font-semibold&quot;&gt;Nativo&lt;/span&gt;
+                                &lt;/div&gt;
+
+                                &lt;div class=&quot;p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between&quot;&gt;
+                                    &lt;div&gt;
+                                        &lt;h4 class=&quot;text-white font-bold text-base&quot;&gt;Lenguas Bereberes&lt;/h4&gt;
+                                        &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Competencia bilingüe o nativa&lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;span class=&quot;px-2.5 py-1 rounded bg-brand/20 text-brand-light text-xs font-semibold&quot;&gt;Nativo&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- SECCIÓN 3: HERRAMIENTAS EMPLEADAS / CONTACTO --&gt;
+        &lt;section id=&quot;herramientas-contacto&quot; class=&quot;py-20 relative&quot;&gt;
+            &lt;div class=&quot;max-w-7xl mx-auto px-4 sm:px-6 lg:px-8&quot;&gt;
+                
+                &lt;!-- Section Header --&gt;
+                &lt;div class=&quot;text-center max-w-3xl mx-auto mb-16&quot;&gt;
+                    &lt;span class=&quot;text-brand-light text-xs font-semibold uppercase tracking-widest block mb-2&quot;&gt;Stack &amp; Interacción&lt;/span&gt;
+                    &lt;h2 class=&quot;text-3xl sm:text-4xl font-extrabold text-white&quot;&gt;
+                        Herramientas empleadas / &lt;span class=&quot;text-brand-light font-serif italic&quot;&gt;Contactos&lt;/span&gt;
+                    &lt;/h2&gt;
+                    &lt;p class=&quot;text-slate-400 text-sm sm:text-base mt-3&quot;&gt;
+                        Dominio completo de plataformas de reclutamiento especializado IT, cumplimiento normativo LOPD, asistentes de Inteligencia Artificial y entornos colaborativos.
+                    &lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Tools Grid Categorized --&gt;
+                &lt;div class=&quot;grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20&quot;&gt;
+                    
+                    &lt;!-- Card 1: Recruitment --&gt;
+                    &lt;div class=&quot;glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group&quot;&gt;
+                        &lt;div class=&quot;flex items-center gap-4 mb-4&quot;&gt;
+                            &lt;div class=&quot;w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-users-viewfinder&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&quot;text-white font-bold text-lg&quot;&gt;Recruitment &amp; Sourcing&lt;/h3&gt;
+                                &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Portales especializados&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex flex-wrap gap-2&quot;&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-linkedin text-blue-400 mr-1.5&quot;&gt;&lt;/i&gt;LinkedIn Recruiter&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-briefcase text-orange-400 mr-1.5&quot;&gt;&lt;/i&gt;InfoJobs&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-laptop-code text-emerald-400 mr-1.5&quot;&gt;&lt;/i&gt;TicJobs&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Card 2: AI Assistants --&gt;
+                    &lt;div class=&quot;glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group&quot;&gt;
+                        &lt;div class=&quot;flex items-center gap-4 mb-4&quot;&gt;
+                            &lt;div class=&quot;w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-brain&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&quot;text-white font-bold text-lg&quot;&gt;Asistentes de IA&lt;/h3&gt;
+                                &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Optimización de procesos&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex flex-wrap gap-2&quot;&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-robot text-teal-400 mr-1.5&quot;&gt;&lt;/i&gt;ChatGPT&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-sparkles text-amber-400 mr-1.5&quot;&gt;&lt;/i&gt;Claude&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-google text-blue-400 mr-1.5&quot;&gt;&lt;/i&gt;Google Gemini&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-microsoft text-sky-400 mr-1.5&quot;&gt;&lt;/i&gt;Microsoft Copilot&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Card 3: Videoconferencing --&gt;
+                    &lt;div class=&quot;glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group&quot;&gt;
+                        &lt;div class=&quot;flex items-center gap-4 mb-4&quot;&gt;
+                            &lt;div class=&quot;w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-video&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&quot;text-white font-bold text-lg&quot;&gt;Videoconferencia&lt;/h3&gt;
+                                &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Entrevistas &amp; Evaluación&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex flex-wrap gap-2&quot;&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-people-group text-indigo-400 mr-1.5&quot;&gt;&lt;/i&gt;MS Teams&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-video text-blue-400 mr-1.5&quot;&gt;&lt;/i&gt;Zoom&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-shield text-emerald-400 mr-1.5&quot;&gt;&lt;/i&gt;Jitsi&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-skype text-sky-400 mr-1.5&quot;&gt;&lt;/i&gt;Skype&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-discord text-indigo-400 mr-1.5&quot;&gt;&lt;/i&gt;Discord&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Card 4: Productivity &amp; Cloud --&gt;
+                    &lt;div class=&quot;glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group&quot;&gt;
+                        &lt;div class=&quot;flex items-center gap-4 mb-4&quot;&gt;
+                            &lt;div class=&quot;w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-file-excel&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&quot;text-white font-bold text-lg&quot;&gt;Ofimática &amp; Gestión&lt;/h3&gt;
+                                &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Reporting y Datos&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex flex-wrap gap-2&quot;&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-microsoft text-sky-400 mr-1.5&quot;&gt;&lt;/i&gt;Office 365&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-table text-emerald-400 mr-1.5&quot;&gt;&lt;/i&gt;MS Excel&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-sheet-plastic text-green-400 mr-1.5&quot;&gt;&lt;/i&gt;Google Sheets&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-regular fa-envelope text-blue-400 mr-1.5&quot;&gt;&lt;/i&gt;Outlook&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Card 5: Compliance &amp; Systems --&gt;
+                    &lt;div class=&quot;glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group&quot;&gt;
+                        &lt;div class=&quot;flex items-center gap-4 mb-4&quot;&gt;
+                            &lt;div class=&quot;w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-shield-halved&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&quot;text-white font-bold text-lg&quot;&gt;Protección &amp; Sistemas&lt;/h3&gt;
+                                &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Seguridad y Soporte N1&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex flex-wrap gap-2&quot;&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-lock text-amber-400 mr-1.5&quot;&gt;&lt;/i&gt;LOPD / RGPD&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-windows text-blue-400 mr-1.5&quot;&gt;&lt;/i&gt;Windows&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-desktop text-indigo-400 mr-1.5&quot;&gt;&lt;/i&gt;TeamViewer&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-phone text-rose-400 mr-1.5&quot;&gt;&lt;/i&gt;SoftPhone X-Lite&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Card 6: Storage &amp; Docs --&gt;
+                    &lt;div class=&quot;glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group&quot;&gt;
+                        &lt;div class=&quot;flex items-center gap-4 mb-4&quot;&gt;
+                            &lt;div class=&quot;w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                &lt;i class=&quot;fa-solid fa-folder-tree&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&quot;text-white font-bold text-lg&quot;&gt;Almacenamiento &amp; PDF&lt;/h3&gt;
+                                &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;Gestión Documental&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex flex-wrap gap-2&quot;&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-solid fa-file-pdf text-red-400 mr-1.5&quot;&gt;&lt;/i&gt;Adobe Acrobat&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-dropbox text-blue-400 mr-1.5&quot;&gt;&lt;/i&gt;Dropbox&lt;/span&gt;
+                            &lt;span class=&quot;px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium&quot;&gt;&lt;i class=&quot;fa-brands fa-google-drive text-amber-400 mr-1.5&quot;&gt;&lt;/i&gt;Google Drive&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+
+                &lt;!-- CONTACT SECTION --&gt;
+                &lt;div id=&quot;contacto&quot; class=&quot;max-w-4xl mx-auto&quot;&gt;
+                    &lt;div class=&quot;bg-gradient-to-r from-slate-900 via-navy-800 to-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden&quot;&gt;
+                        
+                        &lt;div class=&quot;relative z-10 grid md:grid-cols-2 gap-8 items-center&quot;&gt;
+                            &lt;div&gt;
+                                &lt;span class=&quot;bg-brand/20 border border-brand/30 text-brand-light text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider&quot;&gt;
+                                    Contacto Directo
+                                &lt;/span&gt;
+                                &lt;h3 class=&quot;text-2xl sm:text-3xl font-bold text-white mt-3&quot;&gt;
+                                    ¿Hablamos de tu próximo talento IT?
+                                &lt;/h3&gt;
+                                &lt;p class=&quot;text-slate-300 text-sm mt-3 leading-relaxed&quot;&gt;
+                                    Estoy a tu disposición para colaborar en la búsqueda, selección y evaluación de perfiles tecnológicos clave para tu organización.
+                                &lt;/p&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;space-y-4&quot;&gt;
+                                &lt;!-- Email Link --&gt;
+                                &lt;a href=&quot;mailto:chemlalmustafa1@gmail.com&quot; class=&quot;flex items-center gap-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-brand/60 hover:bg-slate-900 transition-all duration-300 group&quot;&gt;
+                                    &lt;div class=&quot;w-12 h-12 rounded-lg bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                        &lt;i class=&quot;fa-solid fa-envelope&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&quot;overflow-hidden&quot;&gt;
+                                        &lt;p class=&quot;text-slate-400 text-xs font-medium&quot;&gt;Correo Electrónico&lt;/p&gt;
+                                        &lt;p class=&quot;text-white font-semibold text-sm truncate group-hover:text-brand-light transition-colors&quot;&gt;chemlalmustafa1@gmail.com&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/a&gt;
+
+                                &lt;!-- LinkedIn Link --&gt;
+                                &lt;a href=&quot;https://linkedin.com/in/mustafá-especialista-rrhh-it&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class=&quot;flex items-center gap-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-brand/60 hover:bg-slate-900 transition-all duration-300 group&quot;&gt;
+                                    &lt;div class=&quot;w-12 h-12 rounded-lg bg-blue-600/10 border border-blue-600/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform&quot;&gt;
+                                        &lt;i class=&quot;fa-brands fa-linkedin-in&quot;&gt;&lt;/i&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&quot;overflow-hidden&quot;&gt;
+                                        &lt;p class=&quot;text-slate-400 text-xs font-medium&quot;&gt;LinkedIn Profesional&lt;/p&gt;
+                                        &lt;p class=&quot;text-white font-semibold text-sm truncate group-hover:text-brand-light transition-colors&quot;&gt;mustafá-especialista-rrhh-it&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/a&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+    &lt;/main&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;footer class=&quot;bg-slate-950 border-t border-slate-800/80 py-8 no-print&quot;&gt;
+        &lt;div class=&quot;max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between sm:items-center&quot;&gt;
+            &lt;p class=&quot;text-slate-400 text-xs&quot;&gt;
+                &amp;copy; &lt;span id=&quot;currentYear&quot;&gt;&lt;/span&gt; Mustapha Chemlal — Técnico de Selección Senior IT.
+            &lt;/p&gt;
+            &lt;div class=&quot;mt-4 sm:mt-0 flex justify-center space-x-6 text-slate-400 text-sm&quot;&gt;
+                &lt;a href=&quot;#inicio&quot; class=&quot;hover:text-white transition-colors&quot;&gt;Inicio&lt;/a&gt;
+                &lt;a href=&quot;#cv&quot; class=&quot;hover:text-white transition-colors&quot;&gt;CV&lt;/a&gt;
+                &lt;a href=&quot;#herramientas-contacto&quot; class=&quot;hover:text-white transition-colors&quot;&gt;Herramientas&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+
+    &lt;script&gt;
+        // Set dynamic copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () =&gt; {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-xl';
+            }
+        });
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-link').forEach(link =&gt; {
+            link.addEventListener('click', () =&gt; {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            });
+        });
+
+        // PDF Generation Functionality using html2pdf
+        function downloadPDF() {
+            const element = document.getElementById('cv-content');
+            const btn = document.getElementById('downloadPdfBtn');
+            const originalBtnContent = btn.innerHTML;
+
+            // Feedback visual button state
+            btn.innerHTML = &lt;i class=&quot;fa-solid fa-circle-notch fa-spin text-xl&quot;&gt;&lt;/i&gt;&lt;span&gt;Generando PDF...&lt;/span&gt;;
+            btn.disabled = true;
+
+            const opt = {
+                margin:       [0.4, 0.4, 0.4, 0.4],
+                filename:     'CV_Mustapha_Chemlal_IT_Recruiter.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#0f172a' },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Generate PDF
+            html2pdf().set(opt).from(element).save().then(() =&gt; {
+                btn.innerHTML = &lt;i class=&quot;fa-solid fa-check text-xl&quot;&gt;&lt;/i&gt;&lt;span&gt;¡PDF Descargado!&lt;/span&gt;;
+                setTimeout(() =&gt; {
+                    btn.innerHTML = originalBtnContent;
+                    btn.disabled = false;
+                }, 3000);
+            }).catch(err =&gt; {
+                console.error('Error al generar PDF:', err);
+                // Fallback to native print if html2pdf encounters issues
+                window.print();
+                btn.innerHTML = originalBtnContent;
+                btn.disabled = false;
+            });
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
