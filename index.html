@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustapha Chemlal | Técnico de Selección Senior IT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- html2pdf.js for exporting PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B192C',
+                            900: '#070F1E',
+                            950: '#030712',
+                        },
+                        brand: {
+                            light: '#38BDF8',
+                            DEFAULT: '#0284C7',
+                            dark: '#0369A1',
+                            accent: '#6366F1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar and glassmorphism styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        /* Print styling rules for PDF generation */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+                background: white !important;
+                color: #1e293b !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 no-print transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Name Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand to-brand-accent flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand/20 group-hover:scale-105 transition-transform duration-300">
+                        MC
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold tracking-tight text-white group-hover:text-brand-light transition-colors">Mustapha Chemlal</span>
+                        <span class="block text-xs text-slate-400 font-medium">Técnico de Selección Senior IT</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1">
+                    <a href="#inicio" class="nav-link text-slate-300 hover:text-white hover:bg-slate-800/60 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200">
+                        <i class="fa-solid fa-user-tie text-brand-light mr-2"></i>Inicio / Acerca de mí
+                    </a>
+                    <a href="#cv" class="nav-link text-slate-300 hover:text-white hover:bg-slate-800/60 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200">
+                        <i class="fa-solid fa-file-invoice text-brand-light mr-2"></i>Currículum Vitae
+                    </a>
+                    <a href="#herramientas-contacto" class="nav-link text-slate-300 hover:text-white hover:bg-slate-800/60 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200">
+                        <i class="fa-solid fa-toolbox text-brand-light mr-2"></i>Herramientas & Contacto
+                    </a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#contacto" class="bg-gradient-to-r from-brand to-brand-accent hover:opacity-95 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-lg shadow-brand/25 transition-all duration-300 hover:-translate-y-0.5">
+                        <i class="fa-regular fa-paper-plane mr-2"></i>Contactar
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" type="button" class="text-slate-400 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-slate-800" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="md:hidden hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-2" id="mobileMenu">
+            <a href="#inicio" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white">
+                <i class="fa-solid fa-user-tie text-brand-light mr-3"></i>Inicio / Acerca de mí
+            </a>
+            <a href="#cv" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white">
+                <i class="fa-solid fa-file-invoice text-brand-light mr-3"></i>Currículum Vitae
+            </a>
+            <a href="#herramientas-contacto" class="mobile-link block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white">
+                <i class="fa-solid fa-toolbox text-brand-light mr-3"></i>Herramientas & Contacto
+            </a>
+            <div class="pt-2">
+                <a href="#contacto" class="mobile-link block text-center bg-brand text-white px-4 py-2.5 rounded-lg font-semibold text-sm">
+                    <i class="fa-regular fa-paper-plane mr-2"></i>Contactar ahora
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow">
+
+        <!-- SECCIÓN 1: INICIO / ACERCA DE MÍ -->
+        <section id="inicio" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-slate-800/50">
+            <!-- Background Glow Effects -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand/15 blur-[120px] rounded-full pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-brand-accent/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/10 border border-brand/30 text-brand-light text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Disponible para Proyectos y Selección IT
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            Mustapha Chemlal
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-light via-sky-300 to-brand-accent text-3xl sm:text-4xl lg:text-5xl font-serif italic mt-2">
+                                Técnico de Selección Senior IT
+                            </span>
+                        </h1>
+
+                        <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-light">
+                            Especialista en Atracción de Talento Tecnológico con más de 6 años de trayectoria conectando profesionales estratégicos de software, ciberseguridad y cloud con empresas líderes en España y Latinoamérica.
+                        </p>
+
+                        <!-- Quick Badges -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium">
+                                <i class="fa-solid fa-earth-americas text-brand-light"></i> Reclutamiento ESP / LATAM
+                            </span>
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium">
+                                <i class="fa-solid fa-robot text-brand-light"></i> AI-Powered Recruiting
+                            </span>
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium">
+                                <i class="fa-solid fa-handshake text-brand-light"></i> IT Headhunting
+                            </span>
+                        </div>
+
+                        <!-- CTA Group -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="#cv" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand to-brand-dark hover:from-brand-light hover:to-brand text-white font-bold text-center shadow-lg shadow-brand/20 transition-all duration-300 hover:scale-[1.02]">
+                                <i class="fa-solid fa-file-pdf mr-2"></i> Ver CV Completo
+                            </a>
+                            <a href="#contacto" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-semibold text-center transition-all duration-300">
+                                <i class="fa-solid fa-address-book mr-2"></i> Contacto Directo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Card Showcase -->
+                    <div class="lg:col-span-5">
+                        <div class="glass-card p-8 rounded-3xl relative shadow-2xl border border-slate-800/80">
+                            <!-- Visual Badge -->
+                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-2xl bg-brand/20 border border-brand/40 flex items-center justify-center text-brand-light text-2xl">
+                                        <i class="fa-solid fa-users-gear"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-bold text-base">Perfil Profesional</h3>
+                                        <p class="text-slate-400 text-xs">Human Resources & Technology</p>
+                                    </div>
+                                </div>
+                                <span class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs px-2.5 py-1 rounded-full font-medium">Activo</span>
+                            </div>
+
+                            <!-- Highlights List -->
+                            <ul class="mt-6 space-y-4">
+                                <li class="flex items-start gap-3.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-award"></i>
+                                    </div>
+                                    <span class="text-slate-300 text-sm leading-snug">
+                                        <strong class="text-white font-semibold">+6 años de experiencia</strong> reclutando a profesionales de tecnología altamente cualificados.
+                                    </span>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-globe"></i>
+                                    </div>
+                                    <span class="text-slate-300 text-sm leading-snug">
+                                        Selección de talento estratégica en <strong class="text-white font-semibold">España y diversos países de LATAM</strong>.
+                                    </span>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-people-arrows"></i>
+                                    </div>
+                                    <span class="text-slate-300 text-sm leading-snug">
+                                        Sólida gestión de relaciones con <strong class="text-white font-semibold">Hiring Managers y candidatos</strong> en todo el ciclo.
+                                    </span>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-bolt"></i>
+                                    </div>
+                                    <span class="text-slate-300 text-sm leading-snug">
+                                        Rápida adaptación a las necesidades dinámicas y metas críticas del negocio.
+                                    </span>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                        <i class="fa-solid fa-list-check"></i>
+                                    </div>
+                                    <span class="text-slate-300 text-sm leading-snug">
+                                        Gestión simultánea de <strong class="text-white font-semibold">múltiples procesos de selección</strong> alcanzando metas exitosas.
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: CURRÍCULUM VITAE -->
+        <section id="cv" class="py-20 border-b border-slate-800/50 bg-slate-900/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header & Download Action -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-brand-light text-xs font-semibold uppercase tracking-widest mb-1">
+                            <i class="fa-solid fa-file-code"></i> Trayectoria Profesional
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                            Currículum Vitae: <span class="text-brand-light font-serif italic">Mustapha Chemlal</span>
+                        </h2>
+                    </div>
+
+                    <div class="no-print">
+                        <button onclick="downloadPDF()" id="downloadPdfBtn" class="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-900/30 transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer">
+                            <i class="fa-solid fa-file-pdf text-xl"></i>
+                            <span>Descargar CV de Mustapha Chemlal</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CV Container Element (Target for html2pdf) -->
+                <div id="cv-content" class="space-y-10 bg-slate-900/80 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-xl print-shadow-none">
+                    
+                    <!-- CV Header for PDF Print Only -->
+                    <div class="hidden print-only pb-6 mb-6 border-b border-slate-300">
+                        <h1 class="text-2xl font-bold text-slate-900">Mustapha Chemlal</h1>
+                        <p class="text-sm text-slate-700 font-semibold">Técnico de Selección Senior IT</p>
+                        <p class="text-xs text-slate-600 mt-1">Email: chemlalmustafa1@gmail.com | LinkedIn: linkedin.com/in/mustafá-especialista-rrhh-it</p>
+                    </div>
+
+                    <!-- EXPERIENCIA PROFESIONAL -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-8 border-b border-slate-800 pb-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light">
+                                <i class="fa-solid fa-briefcase text-lg"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white tracking-tight">Experiencia Profesional</h3>
+                        </div>
+
+                        <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-5 before:w-0.5 before:bg-slate-800">
+                            
+                            <!-- Job Position 1 -->
+                            <div class="relative pl-10 sm:pl-12 group">
+                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-brand border-4 border-slate-950 group-hover:scale-125 transition-transform"></div>
+                                
+                                <div class="bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors">
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                        <div>
+                                            <h4 class="text-xl font-bold text-white">IT Recruitment Consultant <span class="text-brand-light text-sm font-normal">(Remoto)</span></h4>
+                                            <p class="text-slate-300 font-medium text-sm">Empresa Española (Consultora RRHH IT)</p>
+                                        </div>
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand/10 text-brand-light border border-brand/20 text-xs font-semibold w-fit">
+                                            <i class="fa-regular fa-calendar"></i> Feb 2022 – Actualidad
+                                        </span>
+                                    </div>
+
+                                    <ul class="space-y-2.5 text-slate-300 text-sm leading-relaxed mb-4">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Liderazgo y Coordinación:</strong> Coordinación, supervisión y formación de un pequeño equipo de Técnicos de Selección IT.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Gestión de Portales:</strong> Cargar candidaturas a los portales de los clientes, realizando su seguimiento exhaustivo.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Ofertas de Empleo:</strong> Redacción, publicación y gestión de ofertas laborales en LinkedIn Recruiter e Infojobs.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Análisis Crítico:</strong> Coordinación de reuniones semanales proponiendo evaluaciones y análisis críticos de avance.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Reclutamiento de Perfiles IT:</strong> Ciberseguridad, Robótica, Cloud (Pública/Privada), Big Data, Blockchain, Business Intelligence (BI), Redes, Sistemas, Desarrollo (Backend/Frontend)...</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>IA Aplicada a Selección:</strong> Uso de asistentes de IA (ChatGPT, Google Gemini y Microsoft Copilot) para optimizar tareas operativas.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Sourcing Multicanal:</strong> Búsqueda y Selección estratégica de profesionales IT principalmente en LinkedIn, Infojobs y TicJobs.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Entrevistas Técnicas:</strong> Evaluación de competencias mediante videollamadas en Teams, Zoom, Jitsi y Skype.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Contratación y LOPD:</strong> Negociación de condiciones y solicitud de documentación oficial garantizando estricto cumplimiento LOPD/RGPD.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Reporting:</strong> Elaboración de informes detallados en Microsoft Excel y almacenamiento/gestión de datos en Google Sheets.</span>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Collaborations -->
+                                    <div class="pt-3 border-t border-slate-800/80">
+                                        <p class="text-xs text-slate-400 font-semibold mb-2">COLABORACIÓN Y SECTORES:</p>
+                                        <p class="text-xs text-slate-300">
+                                            <strong class="text-slate-200">Partners:</strong> Accenture, Minsait, Ayesa, EY, Grupo GFT, entre otros. <br>
+                                            <strong class="text-slate-200">Sectores de clientes:</strong> Seguros, Aeroespacial, Sanitario, Financiero...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Job Position 2 -->
+                            <div class="relative pl-10 sm:pl-12 group">
+                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand transition-colors"></div>
+                                
+                                <div class="bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors">
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                        <div>
+                                            <h4 class="text-xl font-bold text-white">IT Recruiter & IT Support Technician (L1)</h4>
+                                            <p class="text-slate-300 font-medium text-sm">Empresa Española (Consultora RRHH IT)</p>
+                                        </div>
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold w-fit">
+                                            <i class="fa-regular fa-calendar"></i> Feb 2019 – Ene 2022
+                                        </span>
+                                    </div>
+
+                                    <ul class="space-y-2 text-slate-300 text-sm leading-relaxed">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Búsqueda y Selección activa de talento tecnológico en LinkedIn, TicJob e Infojobs.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Reclutamiento especializado en Desarrollo (Backend/Frontend), SAP, Marketing Digital, Analítica Digital, Seguridad (Ciberseguridad), Sistemas, Cloud, Big Data y Redes.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Coordinación de entrevistas técnicas por Microsoft Teams, Zoom, Jitsi, Skype y Discord.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Negociación, gestión de expedientes de contratación LOPD e informes analíticos en Excel.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span><strong>Soporte Técnico N1:</strong> Atención e incidencias N1, configuración, reactivación, reparación y gestión de cuentas Windows, O365 y Antivirus.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Soporte y mantenimiento remoto a usuarios mediante TeamViewer.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Job Position 3 -->
+                            <div class="relative pl-10 sm:pl-12 group">
+                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand transition-colors"></div>
+                                
+                                <div class="bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors">
+                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                        <div>
+                                            <h4 class="text-xl font-bold text-white">Operador Telefónico</h4>
+                                            <p class="text-slate-300 font-medium text-sm">Vodafone</p>
+                                        </div>
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold w-fit">
+                                            <i class="fa-regular fa-calendar"></i> Sept 2017 – Abr 2018
+                                        </span>
+                                    </div>
+
+                                    <ul class="space-y-2 text-slate-300 text-sm leading-relaxed">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Recepción de llamadas y atención al cliente corporativo mediante SoftPhone X-Lite.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Definición del catálogo de terminales móviles del segmento y roadmap de productos a lanzar con su propuesta de valor.</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <span>Registro de datos en Google Drive, Dropbox y Microsoft Excel. Envío de documentación detallada vía Microsoft Outlook.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- FORMACIÓN ACADÉMICA Y IDIOMAS -->
+                    <div class="grid md:grid-cols-2 gap-8 pt-6 border-t border-slate-800">
+                        <!-- Academic Formation -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Formación Académica</h3>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+                                    <span class="text-xs text-brand-light font-bold">2014 – 2017</span>
+                                    <h4 class="text-white font-bold text-base mt-1">Licenciatura en Estudios Hispánicos</h4>
+                                    <p class="text-slate-400 text-xs">Université Mohammed Premier Oujda</p>
+                                    <p class="text-slate-300 text-xs mt-2 italic">(Especializado en el Análisis Semiótico de Textos Literarios)</p>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+                                    <span class="text-xs text-brand-light font-bold">2001 – 2013</span>
+                                    <h4 class="text-white font-bold text-base mt-1">Bachillerato (Ciencia de Vida y Tierra)</h4>
+                                    <p class="text-slate-400 text-xs">Residencia De Estudiantes De Melilla</p>
+                                    <p class="text-slate-300 text-xs mt-2">Geología / Ciencias de la Tierra, General.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Languages -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light">
+                                    <i class="fa-solid fa-language"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Idiomas</h3>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-white font-bold text-base">Español</h4>
+                                        <p class="text-slate-400 text-xs">Competencia bilingüe o nativa</p>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded bg-brand/20 text-brand-light text-xs font-semibold">Nativo</span>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-white font-bold text-base">Lenguas Bereberes</h4>
+                                        <p class="text-slate-400 text-xs">Competencia bilingüe o nativa</p>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded bg-brand/20 text-brand-light text-xs font-semibold">Nativo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: HERRAMIENTAS EMPLEADAS / CONTACTO -->
+        <section id="herramientas-contacto" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-brand-light text-xs font-semibold uppercase tracking-widest block mb-2">Stack & Interacción</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        Herramientas empleadas / <span class="text-brand-light font-serif italic">Contactos</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base mt-3">
+                        Dominio completo de plataformas de reclutamiento especializado IT, cumplimiento normativo LOPD, asistentes de Inteligencia Artificial y entornos colaborativos.
+                    </p>
+                </div>
+
+                <!-- Tools Grid Categorized -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+                    
+                    <!-- Card 1: Recruitment -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-users-viewfinder"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">Recruitment & Sourcing</h3>
+                                <p class="text-slate-400 text-xs">Portales especializados</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-linkedin text-blue-400 mr-1.5"></i>LinkedIn Recruiter</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-briefcase text-orange-400 mr-1.5"></i>InfoJobs</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-laptop-code text-emerald-400 mr-1.5"></i>TicJobs</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: AI Assistants -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">Asistentes de IA</h3>
+                                <p class="text-slate-400 text-xs">Optimización de procesos</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-robot text-teal-400 mr-1.5"></i>ChatGPT</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-sparkles text-amber-400 mr-1.5"></i>Claude</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-google text-blue-400 mr-1.5"></i>Google Gemini</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-microsoft text-sky-400 mr-1.5"></i>Microsoft Copilot</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Videoconferencing -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-video"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">Videoconferencia</h3>
+                                <p class="text-slate-400 text-xs">Entrevistas & Evaluación</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-people-group text-indigo-400 mr-1.5"></i>MS Teams</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-video text-blue-400 mr-1.5"></i>Zoom</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-shield text-emerald-400 mr-1.5"></i>Jitsi</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-skype text-sky-400 mr-1.5"></i>Skype</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-discord text-indigo-400 mr-1.5"></i>Discord</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Productivity & Cloud -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-file-excel"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">Ofimática & Gestión</h3>
+                                <p class="text-slate-400 text-xs">Reporting y Datos</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-microsoft text-sky-400 mr-1.5"></i>Office 365</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-table text-emerald-400 mr-1.5"></i>MS Excel</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-sheet-plastic text-green-400 mr-1.5"></i>Google Sheets</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-regular fa-envelope text-blue-400 mr-1.5"></i>Outlook</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Compliance & Systems -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">Protección & Sistemas</h3>
+                                <p class="text-slate-400 text-xs">Seguridad y Soporte N1</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-lock text-amber-400 mr-1.5"></i>LOPD / RGPD</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-windows text-blue-400 mr-1.5"></i>Windows</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-desktop text-indigo-400 mr-1.5"></i>TeamViewer</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-phone text-rose-400 mr-1.5"></i>SoftPhone X-Lite</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Storage & Docs -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-brand/50 transition-all duration-300 group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-folder-tree"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">Almacenamiento & PDF</h3>
+                                <p class="text-slate-400 text-xs">Gestión Documental</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-solid fa-file-pdf text-red-400 mr-1.5"></i>Adobe Acrobat</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-dropbox text-blue-400 mr-1.5"></i>Dropbox</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium"><i class="fa-brands fa-google-drive text-amber-400 mr-1.5"></i>Google Drive</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CONTACT SECTION -->
+                <div id="contacto" class="max-w-4xl mx-auto">
+                    <div class="bg-gradient-to-r from-slate-900 via-navy-800 to-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+                        
+                        <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <span class="bg-brand/20 border border-brand/30 text-brand-light text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                                    Contacto Directo
+                                </span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mt-3">
+                                    ¿Hablamos de tu próximo talento IT?
+                                </h3>
+                                <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                                    Estoy a tu disposición para colaborar en la búsqueda, selección y evaluación de perfiles tecnológicos clave para tu organización.
+                                </p>
+                            </div>
+
+                            <div class="space-y-4">
+                                <!-- Email Link -->
+                                <a href="mailto:chemlalmustafa1@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-brand/60 hover:bg-slate-900 transition-all duration-300 group">
+                                    <div class="w-12 h-12 rounded-lg bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light text-xl group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <p class="text-slate-400 text-xs font-medium">Correo Electrónico</p>
+                                        <p class="text-white font-semibold text-sm truncate group-hover:text-brand-light transition-colors">chemlalmustafa1@gmail.com</p>
+                                    </div>
+                                </a>
+
+                                <!-- LinkedIn Link -->
+                                <a href="https://linkedin.com/in/mustafá-especialista-rrhh-it" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-brand/60 hover:bg-slate-900 transition-all duration-300 group">
+                                    <div class="w-12 h-12 rounded-lg bg-blue-600/10 border border-blue-600/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <p class="text-slate-400 text-xs font-medium">LinkedIn Profesional</p>
+                                        <p class="text-white font-semibold text-sm truncate group-hover:text-brand-light transition-colors">mustafá-especialista-rrhh-it</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-8 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between sm:items-center">
+            <p class="text-slate-400 text-xs">
+                &copy; <span id="currentYear"></span> Mustapha Chemlal — Técnico de Selección Senior IT.
+            </p>
+            <div class="mt-4 sm:mt-0 flex justify-center space-x-6 text-slate-400 text-sm">
+                <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
+                <a href="#cv" class="hover:text-white transition-colors">CV</a>
+                <a href="#herramientas-contacto" class="hover:text-white transition-colors">Herramientas</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-xl';
+            }
+        });
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            });
+        });
+
+        // PDF Generation Functionality using html2pdf
+        function downloadPDF() {
+            const element = document.getElementById('cv-content');
+            const btn = document.getElementById('downloadPdfBtn');
+            const originalBtnContent = btn.innerHTML;
+
+            // Feedback visual button state
+            btn.innerHTML = <i class="fa-solid fa-circle-notch fa-spin text-xl"></i><span>Generando PDF...</span>;
+            btn.disabled = true;
+
+            const opt = {
+                margin:       [0.4, 0.4, 0.4, 0.4],
+                filename:     'CV_Mustapha_Chemlal_IT_Recruiter.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#0f172a' },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Generate PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerHTML = <i class="fa-solid fa-check text-xl"></i><span>¡PDF Descargado!</span>;
+                setTimeout(() => {
+                    btn.innerHTML = originalBtnContent;
+                    btn.disabled = false;
+                }, 3000);
+            }).catch(err => {
+                console.error('Error al generar PDF:', err);
+                // Fallback to native print if html2pdf encounters issues
+                window.print();
+                btn.innerHTML = originalBtnContent;
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
