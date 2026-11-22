@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script>
+        // Aplicar tema guardado o preferencia del sistema antes de renderizar
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+            document.documentElement.classList.toggle('dark', initialDark);
+        })();
+
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -46,24 +54,45 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        html.dark ::-webkit-scrollbar-track {
             background: #0f172a;
         }
         ::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: #94a3b8;
             border-radius: 4px;
+        }
+        html.dark ::-webkit-scrollbar-thumb {
+            background: #334155;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #0284c7;
         }
 
         .glass-card {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        html.dark .glass-card {
+            background: rgba(15, 23, 42, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         /* Animación de cambio de color: Azul celeste a Azul marino (Nombre Principal) */
-        @keyframes glowCycleSkyToNavy {
+        @keyframes glowCycleSkyToNavyLight {
+            0%, 100% {
+                color: #0284C7;
+                text-shadow: 0 0 14px rgba(2, 132, 199, 0.25);
+            }
+            50% {
+                color: #1E3A8A;
+                text-shadow: 0 0 14px rgba(30, 58, 138, 0.25);
+            }
+        }
+
+        @keyframes glowCycleSkyToNavyDark {
             0%, 100% {
                 color: #7DD3FC; /* Azul celeste */
                 text-shadow: 0 0 18px rgba(125, 211, 252, 0.85), 0 0 32px rgba(125, 211, 252, 0.45);
@@ -75,11 +104,23 @@
         }
 
         .animate-name-glow {
-            animation: glowCycleSkyToNavy 3.2s infinite ease-in-out;
+            animation: glowCycleSkyToNavyLight 3.2s infinite ease-in-out;
+        }
+        html.dark .animate-name-glow {
+            animation: glowCycleSkyToNavyDark 3.2s infinite ease-in-out;
         }
 
         /* Animación de cambio de color: Azul celeste a Azul marino (Nombres de Empresas) */
-        @keyframes companyCycleSkyToNavy {
+        @keyframes companyCycleSkyToNavyLight {
+            0%, 100% {
+                color: #0284C7;
+            }
+            50% {
+                color: #1E40AF;
+            }
+        }
+
+        @keyframes companyCycleSkyToNavyDark {
             0%, 100% {
                 color: #7DD3FC; /* Azul celeste */
                 text-shadow: 0 0 12px rgba(125, 211, 252, 0.6);
@@ -91,7 +132,10 @@
         }
 
         .animate-company-colors {
-            animation: companyCycleSkyToNavy 3.2s infinite ease-in-out;
+            animation: companyCycleSkyToNavyLight 3.2s infinite ease-in-out;
+        }
+        html.dark .animate-company-colors {
+            animation: companyCycleSkyToNavyDark 3.2s infinite ease-in-out;
         }
 
         /* Animación de movimiento de izquierda a derecha para el subtítulo */
@@ -126,10 +170,10 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand selection:text-white min-h-screen flex flex-col justify-between">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-brand selection:text-white min-h-screen flex flex-col justify-between transition-colors duration-300">
 
     <!-- Navigation Bar -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80 transition-all duration-300" id="mainHeader">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800/80 transition-all duration-300" id="mainHeader">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Brand / Name Logo -->
@@ -138,35 +182,42 @@
                         MC
                     </div>
                     <div>
-                        <span class="text-lg font-bold tracking-tight text-white group-hover:text-brand-light transition-colors">Mustapha Chemlal</span>
-                        <span class="block text-xs text-slate-400 font-medium">Técnico de Selección Senior IT</span>
+                        <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-brand dark:group-hover:text-brand-light transition-colors">Mustapha Chemlal</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400 font-medium">Técnico de Selección Senior IT</span>
                     </div>
                 </button>
 
                 <!-- Desktop Navigation Links (1 Presentación, 2 Trayectoria profesional, 3 Contactos) -->
                 <nav class="hidden md:flex items-center space-x-2">
-                    <button onclick="showPage('presentacion')" id="nav-presentacion" class="nav-btn text-white bg-slate-800/80 border border-brand/40 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer">
-                        <span class="text-brand-light font-bold mr-1.5">1.</span>Presentación
+                    <button onclick="showPage('presentacion')" id="nav-presentacion" class="nav-btn text-slate-900 dark:text-white bg-slate-200/80 dark:bg-slate-800/80 border border-brand/40 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer">
+                        <span class="text-brand dark:text-brand-light font-bold mr-1.5">1.</span>Presentación
                     </button>
-                    <button onclick="showPage('trayectoria')" id="nav-trayectoria" class="nav-btn text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer">
-                        <span class="text-brand-light font-bold mr-1.5">2.</span>Trayectoria profesional
+                    <button onclick="showPage('trayectoria')" id="nav-trayectoria" class="nav-btn text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60 border border-transparent px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer">
+                        <span class="text-brand dark:text-brand-light font-bold mr-1.5">2.</span>Trayectoria profesional
                     </button>
-                    <button onclick="showPage('contactos')" id="nav-contactos" class="nav-btn text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer">
-                        <span class="text-brand-light font-bold mr-1.5">3.</span>Contactos
+                    <button onclick="showPage('contactos')" id="nav-contactos" class="nav-btn text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60 border border-transparent px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer">
+                        <span class="text-brand dark:text-brand-light font-bold mr-1.5">3.</span>Contactos
                     </button>
                 </nav>
 
-                <!-- Descargar CV en PDF Action Button -->
+                <!-- Theme Toggle + Descargar CV en PDF Action Button -->
                 <div class="hidden md:flex items-center gap-3">
+                    <button id="themeToggleBtn" type="button" onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-amber-300 border border-slate-200 dark:border-slate-800 flex items-center justify-center transition-all duration-200 cursor-pointer" aria-label="Cambiar a modo claro" title="Cambiar tema">
+                        <i class="fa-solid fa-sun text-base" id="themeIcon"></i>
+                    </button>
+
                     <a href="CV_Chemlal-Mustapha.pdf" download="CV_Chemlal-Mustapha.pdf" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2">
                         <i class="fa-solid fa-file-pdf"></i>
                         <span>Descargar CV en PDF</span>
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobileMenuBtn" type="button" class="text-slate-400 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-slate-800" aria-label="Abrir menú">
+                <!-- Mobile Theme & Menu Buttons -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="mobileThemeToggleBtn" type="button" onclick="toggleTheme()" class="text-slate-700 dark:text-amber-300 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none p-2 rounded-lg border border-slate-200 dark:border-slate-800" aria-label="Cambiar tema">
+                        <i class="fa-solid fa-sun text-lg" id="mobileThemeIcon"></i>
+                    </button>
+                    <button id="mobileMenuBtn" type="button" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white focus:outline-none p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800" aria-label="Abrir menú">
                         <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
                     </button>
                 </div>
@@ -174,14 +225,14 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div class="md:hidden hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-2" id="mobileMenu">
-            <button onclick="showPage('presentacion'); closeMobileMenu();" id="mob-presentacion" class="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-white bg-slate-800">
+        <div class="md:hidden hidden bg-white/95 dark:bg-slate-900/95 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-2" id="mobileMenu">
+            <button onclick="showPage('presentacion'); closeMobileMenu();" id="mob-presentacion" class="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-800">
                 1. Presentación
             </button>
-            <button onclick="showPage('trayectoria'); closeMobileMenu();" id="mob-trayectoria" class="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white">
+            <button onclick="showPage('trayectoria'); closeMobileMenu();" id="mob-trayectoria" class="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white">
                 2. Trayectoria profesional
             </button>
-            <button onclick="showPage('contactos'); closeMobileMenu();" id="mob-contactos" class="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white">
+            <button onclick="showPage('contactos'); closeMobileMenu();" id="mob-contactos" class="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white">
                 3. Contactos
             </button>
             <div class="pt-2">
@@ -208,8 +259,8 @@
                     
                     <!-- Left Hero Content -->
                     <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/10 border border-brand/30 text-brand-light text-xs font-semibold uppercase tracking-wider">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/10 border border-brand/30 text-brand dark:text-brand-light text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
                             Presentación Profesional
                         </div>
 
@@ -219,26 +270,26 @@
                             
                             <!-- Subtítulo movible de izquierda a derecha -->
                             <span class="block overflow-visible py-2">
-                                <span class="animate-slide-lr text-transparent bg-clip-text bg-gradient-to-r from-brand-light via-sky-300 to-brand-accent text-2xl sm:text-4xl lg:text-5xl font-serif italic mt-1">
+                                <span class="animate-slide-lr text-transparent bg-clip-text bg-gradient-to-r from-brand via-sky-500 to-brand-accent dark:from-brand-light dark:via-sky-300 dark:to-brand-accent text-2xl sm:text-4xl lg:text-5xl font-serif italic mt-1">
                                     Técnico de Selección Senior IT
                                 </span>
                             </span>
                         </h1>
 
-                        <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-light">
+                        <p class="text-slate-600 dark:text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-light">
                             Especialista en Atracción de Talento Tecnológico con más de 6 años de trayectoria conectando profesionales estratégicos de software, ciberseguridad y cloud con empresas líderes en España y Latinoamérica.
                         </p>
 
                         <!-- Quick Badges -->
                         <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium">
-                                <i class="fa-solid fa-earth-americas text-brand-light"></i> Reclutamiento ESP / LATAM
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium shadow-sm dark:shadow-none">
+                                <i class="fa-solid fa-earth-americas text-brand dark:text-brand-light"></i> Reclutamiento ESP / LATAM
                             </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium">
-                                <i class="fa-solid fa-robot text-brand-light"></i> AI-Powered Recruiting
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium shadow-sm dark:shadow-none">
+                                <i class="fa-solid fa-robot text-brand dark:text-brand-light"></i> AI-Powered Recruiting
                             </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium">
-                                <i class="fa-solid fa-handshake text-brand-light"></i> IT Headhunting
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium shadow-sm dark:shadow-none">
+                                <i class="fa-solid fa-handshake text-brand dark:text-brand-light"></i> IT Headhunting
                             </span>
                         </div>
 
@@ -247,7 +298,7 @@
                             <button onclick="showPage('trayectoria')" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand to-brand-dark hover:from-brand-light hover:to-brand text-white font-bold text-center shadow-lg shadow-brand/20 transition-all duration-300 hover:scale-[1.02] cursor-pointer">
                                 <i class="fa-solid fa-briefcase mr-2"></i> Ver Trayectoria Profesional
                             </button>
-                            <a href="CV_Chemlal-Mustapha.pdf" download="CV_Chemlal-Mustapha.pdf" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 font-semibold text-center transition-all duration-300">
+                            <a href="CV_Chemlal-Mustapha.pdf" download="CV_Chemlal-Mustapha.pdf" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-600/15 dark:bg-emerald-600/20 hover:bg-emerald-600/25 dark:hover:bg-emerald-600/30 text-emerald-700 dark:text-emerald-300 border border-emerald-600/30 dark:border-emerald-500/40 font-semibold text-center transition-all duration-300">
                                 <i class="fa-solid fa-file-pdf mr-2"></i> Descargar CV en PDF
                             </a>
                         </div>
@@ -255,61 +306,61 @@
 
                     <!-- Right Card Showcase -->
                     <div class="lg:col-span-5">
-                        <div class="glass-card p-8 rounded-3xl relative shadow-2xl border border-slate-800/80">
+                        <div class="glass-card p-8 rounded-3xl relative shadow-xl dark:shadow-2xl">
                             <!-- Visual Badge -->
-                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                            <div class="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-slate-800">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded-2xl bg-brand/20 border border-brand/40 flex items-center justify-center text-brand-light text-2xl">
+                                    <div class="w-12 h-12 rounded-2xl bg-brand/15 dark:bg-brand/20 border border-brand/30 dark:border-brand/40 flex items-center justify-center text-brand dark:text-brand-light text-2xl">
                                         <i class="fa-solid fa-users-gear"></i>
                                     </div>
                                     <div>
-                                        <h3 class="text-white font-bold text-base">Perfil Profesional</h3>
-                                        <p class="text-slate-400 text-xs">Human Resources & Technology</p>
+                                        <h3 class="text-slate-900 dark:text-white font-bold text-base">Perfil Profesional</h3>
+                                        <p class="text-slate-500 dark:text-slate-400 text-xs">Human Resources & Technology</p>
                                     </div>
                                 </div>
-                                <span class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs px-2.5 py-1 rounded-full font-medium">Activo</span>
+                                <span class="bg-emerald-500/15 dark:bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs px-2.5 py-1 rounded-full font-medium">Activo</span>
                             </div>
 
                             <!-- Highlights List -->
                             <ul class="mt-6 space-y-4">
                                 <li class="flex items-start gap-3.5">
-                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-brand dark:text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                                         <i class="fa-solid fa-award"></i>
                                     </div>
-                                    <span class="text-slate-300 text-sm leading-snug">
-                                        <strong class="text-white font-semibold">+6 años de experiencia</strong> reclutando a profesionales de tecnología altamente cualificados.
+                                    <span class="text-slate-600 dark:text-slate-300 text-sm leading-snug">
+                                        <strong class="text-slate-900 dark:text-white font-semibold">+6 años de experiencia</strong> reclutando a profesionales de tecnología altamente cualificados.
                                     </span>
                                 </li>
                                 <li class="flex items-start gap-3.5">
-                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-brand dark:text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                                         <i class="fa-solid fa-globe"></i>
                                     </div>
-                                    <span class="text-slate-300 text-sm leading-snug">
-                                        Selección de talento estratégica en <strong class="text-white font-semibold">España y diversos países de LATAM</strong>.
+                                    <span class="text-slate-600 dark:text-slate-300 text-sm leading-snug">
+                                        Selección de talento estratégica en <strong class="text-slate-900 dark:text-white font-semibold">España y diversos países de LATAM</strong>.
                                     </span>
                                 </li>
                                 <li class="flex items-start gap-3.5">
-                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-brand dark:text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                                         <i class="fa-solid fa-people-arrows"></i>
                                     </div>
-                                    <span class="text-slate-300 text-sm leading-snug">
-                                        Sólida gestión de relaciones con <strong class="text-white font-semibold">Hiring Managers y candidatos</strong> en todo el ciclo.
+                                    <span class="text-slate-600 dark:text-slate-300 text-sm leading-snug">
+                                        Sólida gestión de relaciones con <strong class="text-slate-900 dark:text-white font-semibold">Hiring Managers y candidatos</strong> en todo el ciclo.
                                     </span>
                                 </li>
                                 <li class="flex items-start gap-3.5">
-                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-brand dark:text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                                         <i class="fa-solid fa-bolt"></i>
                                     </div>
-                                    <span class="text-slate-300 text-sm leading-snug">
+                                    <span class="text-slate-600 dark:text-slate-300 text-sm leading-snug">
                                         Rápida adaptación a las necesidades dinámicas y metas críticas del negocio.
                                     </span>
                                 </li>
                                 <li class="flex items-start gap-3.5">
-                                    <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                                    <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-brand dark:text-brand-light flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                                         <i class="fa-solid fa-list-check"></i>
                                     </div>
-                                    <span class="text-slate-300 text-sm leading-snug">
-                                        Gestión simultánea de <strong class="text-white font-semibold">múltiples procesos de selección</strong> alcanzando metas exitosas.
+                                    <span class="text-slate-600 dark:text-slate-300 text-sm leading-snug">
+                                        Gestión simultánea de <strong class="text-slate-900 dark:text-white font-semibold">múltiples procesos de selección</strong> alcanzando metas exitosas.
                                     </span>
                                 </li>
                             </ul>
@@ -323,17 +374,17 @@
         <!-- ========================================================= -->
         <!-- PÁGINA 2: TRAYECTORIA PROFESIONAL                         -->
         <!-- ========================================================= -->
-        <section id="page-trayectoria" class="page-section hidden py-16 bg-slate-900/30">
+        <section id="page-trayectoria" class="page-section hidden py-16 bg-slate-100/70 dark:bg-slate-900/30">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <!-- Section Header & Download Action -->
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
                     <div>
-                        <div class="inline-flex items-center gap-2 text-brand-light text-xs font-semibold uppercase tracking-widest mb-1">
+                        <div class="inline-flex items-center gap-2 text-brand dark:text-brand-light text-xs font-semibold uppercase tracking-widest mb-1">
                             <i class="fa-solid fa-briefcase"></i> Página 2 · Currículum
                         </div>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-                            Trayectoria <span class="text-brand-light font-serif italic">Profesional</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+                            Trayectoria <span class="text-brand dark:text-brand-light font-serif italic">Profesional</span>
                         </h2>
                     </div>
 
@@ -346,78 +397,78 @@
                 </div>
 
                 <!-- CV Container Element -->
-                <div class="space-y-10 bg-slate-900/80 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-xl">
+                <div class="space-y-10 bg-white dark:bg-slate-900/80 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-xl">
                     
                     <!-- EXPERIENCIA PROFESIONAL -->
                     <div>
-                        <div class="flex items-center gap-3 mb-8 border-b border-slate-800 pb-3">
-                            <div class="w-10 h-10 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light">
+                        <div class="flex items-center gap-3 mb-8 border-b border-slate-200 dark:border-slate-800 pb-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand dark:text-brand-light">
                                 <i class="fa-solid fa-briefcase text-lg"></i>
                             </div>
-                            <h3 class="text-2xl font-bold text-white tracking-tight uppercase">Experiencia Profesional</h3>
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight uppercase">Experiencia Profesional</h3>
                         </div>
 
-                        <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-5 before:w-0.5 before:bg-slate-800">
+                        <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-5 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800">
                             
                             <!-- Job Position 1: Madritec (2022 - Actualidad) -->
                             <div class="relative pl-10 sm:pl-12 group">
-                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-brand border-4 border-slate-950 group-hover:scale-125 transition-transform"></div>
+                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-brand border-4 border-white dark:border-slate-950 group-hover:scale-125 transition-transform"></div>
                                 
-                                <div class="bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors">
+                                <div class="bg-slate-50 dark:bg-slate-950/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
                                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                                         <div>
                                             <h4 class="text-xl font-extrabold animate-company-colors">Madritec <span class="text-sm font-semibold opacity-90">(Consultora IT Española)</span></h4>
-                                            <p class="text-white font-semibold text-base mt-0.5">Técnico de Selección Senior IT / Consultor Selección IT</p>
+                                            <p class="text-slate-900 dark:text-white font-semibold text-base mt-0.5">Técnico de Selección Senior IT / Consultor Selección IT</p>
                                         </div>
-                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand/10 text-brand-light border border-brand/20 text-xs font-semibold w-fit">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand/10 text-brand dark:text-brand-light border border-brand/20 text-xs font-semibold w-fit">
                                             <i class="fa-regular fa-calendar"></i> feb 2022 – actualidad
                                         </span>
                                     </div>
 
-                                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Funciones:</p>
-                                    <ul class="space-y-2.5 text-slate-300 text-sm leading-relaxed">
+                                    <p class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Funciones:</p>
+                                    <ul class="space-y-2.5 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Coordinación, supervisión y formación de un pequeño equipo de Técnicos de Selección IT.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Coordinación de reuniones semanales, exponiendo un análisis crítico.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Cargar candidaturas a los portales de los clientes, realizando su seguimiento.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Redacción, publicación y gestión de ofertas laborales en: <strong>LinkedIn Recruiter, InfoJobs y TicJobs</strong>.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Reclutamiento de perfiles IT: <strong>IA (Inteligencia Artificial Generativa), Defensa (Radares, Radio y Electrónica), Ingeniería nuclear, CiberSeguridad, Blockchain, Redes, Sistemas, Big Data, Ingeniería de datos</strong>. Y también perfiles de desarrollo (<strong>Backend, Frontend y FullStack</strong>).</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Uso de asistentes de IA: <strong>Claude (Opus y Fable), ChatGPT (Luna, Sol y Astra) y Microsoft Copilot</strong> para optimizar las tareas.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Búsqueda y Selección de profesionales IT, principalmente en LinkedIn, InfoJobs y TicJobs.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Realización de entrevistas técnicas con los candidatos para evaluar su experiencia mediante: <strong>Teams, Zoom y Jitsi</strong>.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Negociación y solicitud de documentación de contratación (Cumpliendo LOPD).</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Elaboración de informes detallados en Microsoft Excel y almacenamiento de datos en Google Sheets.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Colaboración con clientes nacionales e internacionales de diversos sectores (<strong>Banca, Seguros, Telco, Defensa, Energético, Administración Pública, Aeroespacial, Automovilístico...</strong>).</span>
                                         </li>
                                     </ul>
@@ -426,47 +477,47 @@
 
                             <!-- Job Position 2: Madritec (2019 - 2022) -->
                             <div class="relative pl-10 sm:pl-12 group">
-                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand transition-colors"></div>
+                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 group-hover:bg-brand transition-colors"></div>
                                 
-                                <div class="bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors">
+                                <div class="bg-slate-50 dark:bg-slate-950/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
                                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                                         <div>
                                             <h4 class="text-xl font-extrabold animate-company-colors">Madritec <span class="text-sm font-semibold opacity-90">(Consultora IT Española)</span></h4>
-                                            <p class="text-white font-semibold text-base mt-0.5">Técnico de Selección IT / Técnico de Soporte</p>
+                                            <p class="text-slate-900 dark:text-white font-semibold text-base mt-0.5">Técnico de Selección IT / Técnico de Soporte</p>
                                         </div>
-                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold w-fit">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 text-xs font-semibold w-fit">
                                             <i class="fa-regular fa-calendar"></i> feb 2019 – ene 2022
                                         </span>
                                     </div>
 
-                                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Funciones:</p>
-                                    <ul class="space-y-2 text-slate-300 text-sm leading-relaxed">
+                                    <p class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Funciones:</p>
+                                    <ul class="space-y-2 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Búsqueda y selección de profesionales IT a través de LinkedIn, TicJob e InfoJobs.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Reclutamiento de perfiles IT en las áreas de desarrollo (backend y frontend), SAP, marketing digital, analítica digital, seguridad y ciberseguridad, sistemas, cloud público y privado, Big Data y redes.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Coordinación y realización de entrevistas técnicas para evaluar la experiencia de los candidatos, utilizando Microsoft Teams, Zoom, Jitsi, Skype y Discord.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Negociación de condiciones y solicitud de la documentación necesaria para la contratación, garantizando el cumplimiento de la LOPD.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Elaboración de informes detallados mediante Microsoft Excel.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Soporte técnico de primer nivel (N1): resolución de incidencias, configuración, reactivación y reparación de equipos, y gestión de cuentas de Windows, Microsoft 365 y antivirus.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Soporte y mantenimiento remoto mediante TeamViewer.</span>
                                         </li>
                                     </ul>
@@ -475,43 +526,43 @@
 
                             <!-- Job Position 3: Vodafone -->
                             <div class="relative pl-10 sm:pl-12 group">
-                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-brand transition-colors"></div>
+                                <div class="absolute left-2 sm:left-3 top-1.5 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 group-hover:bg-brand transition-colors"></div>
                                 
-                                <div class="bg-slate-950/60 p-6 rounded-2xl border border-slate-800/80 hover:border-slate-700 transition-colors">
+                                <div class="bg-slate-50 dark:bg-slate-950/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
                                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                                         <div>
                                             <h4 class="text-xl font-extrabold animate-company-colors">Vodafone</h4>
-                                            <p class="text-white font-semibold text-base mt-0.5">Operador telefónico</p>
+                                            <p class="text-slate-900 dark:text-white font-semibold text-base mt-0.5">Operador telefónico</p>
                                         </div>
-                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold w-fit">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 text-xs font-semibold w-fit">
                                             <i class="fa-regular fa-calendar"></i> sept 2017 – abr 2018
                                         </span>
                                     </div>
 
-                                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Funciones:</p>
-                                    <ul class="space-y-2 text-slate-300 text-sm leading-relaxed">
+                                    <p class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Funciones:</p>
+                                    <ul class="space-y-2 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Recepción de llamadas y atención al cliente mediante SoftPhone X-Lite.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Definición del catálogo de terminales móviles para el segmento.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Planificación de la hoja de ruta de los productos y definición de su propuesta de valor.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Registro y gestión de datos en Google Drive, Dropbox y Microsoft Excel.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Envío de documentación detallada al gerente mediante Microsoft Outlook.</span>
                                         </li>
                                         <li class="flex items-start gap-2">
-                                            <i class="fa-solid fa-angle-right text-brand-light mt-1 text-xs"></i>
+                                            <i class="fa-solid fa-angle-right text-brand dark:text-brand-light mt-1 text-xs"></i>
                                             <span>Verificación de que los productos lanzados por la compañía cumplen los requisitos y las particularidades del segmento.</span>
                                         </li>
                                     </ul>
@@ -522,28 +573,28 @@
                     </div>
 
                     <!-- EDUCACIÓN E IDIOMAS -->
-                    <div class="grid md:grid-cols-2 gap-8 pt-6 border-t border-slate-800">
+                    <div class="grid md:grid-cols-2 gap-8 pt-6 border-t border-slate-200 dark:border-slate-800">
                         <!-- Educación -->
                         <div>
                             <div class="flex items-center gap-3 mb-6">
-                                <div class="w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light">
+                                <div class="w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand dark:text-brand-light">
                                     <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
-                                <h3 class="text-xl font-bold text-white uppercase">Educación</h3>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white uppercase">Educación</h3>
                             </div>
 
                             <div class="space-y-4">
-                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-                                    <span class="text-xs text-brand-light font-bold">2014 – 2017</span>
-                                    <h4 class="text-white font-bold text-base mt-1">Licenciatura, Estudios Hispánicos</h4>
-                                    <p class="text-slate-400 text-xs">Universidad Mohammed Primero de Oujda</p>
-                                    <p class="text-slate-300 text-xs mt-2 italic">(Análisis Semiótico de Textos Literarios)</p>
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
+                                    <span class="text-xs text-brand dark:text-brand-light font-bold">2014 – 2017</span>
+                                    <h4 class="text-slate-900 dark:text-white font-bold text-base mt-1">Licenciatura, Estudios Hispánicos</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs">Universidad Mohammed Primero de Oujda</p>
+                                    <p class="text-slate-600 dark:text-slate-300 text-xs mt-2 italic">(Análisis Semiótico de Textos Literarios)</p>
                                 </div>
 
-                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-                                    <span class="text-xs text-brand-light font-bold">2001 – 2013</span>
-                                    <h4 class="text-white font-bold text-base mt-1">Bachillerato (Ciencia de Vida y Tierra)</h4>
-                                    <p class="text-slate-400 text-xs">Residencia de Estudiantes de Melilla</p>
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
+                                    <span class="text-xs text-brand dark:text-brand-light font-bold">2001 – 2013</span>
+                                    <h4 class="text-slate-900 dark:text-white font-bold text-base mt-1">Bachillerato (Ciencia de Vida y Tierra)</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-xs">Residencia de Estudiantes de Melilla</p>
                                 </div>
                             </div>
                         </div>
@@ -551,38 +602,38 @@
                         <!-- Idiomas -->
                         <div>
                             <div class="flex items-center gap-3 mb-6">
-                                <div class="w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand-light">
+                                <div class="w-9 h-9 rounded-xl bg-brand/10 border border-brand/30 flex items-center justify-center text-brand dark:text-brand-light">
                                     <i class="fa-solid fa-language"></i>
                                 </div>
-                                <h3 class="text-xl font-bold text-white uppercase">Idiomas</h3>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white uppercase">Idiomas</h3>
                             </div>
 
                             <div class="space-y-4">
-                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between">
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
                                     <div>
-                                        <h4 class="text-white font-bold text-base">Lenguas bereberes</h4>
-                                        <p class="text-slate-400 text-xs">Competencia bilingüe o nativa</p>
+                                        <h4 class="text-slate-900 dark:text-white font-bold text-base">Lenguas bereberes</h4>
+                                        <p class="text-slate-500 dark:text-slate-400 text-xs">Competencia bilingüe o nativa</p>
                                     </div>
-                                    <span class="px-2.5 py-1 rounded bg-brand/20 text-brand-light text-xs font-semibold">Nativo</span>
+                                    <span class="px-2.5 py-1 rounded bg-brand/15 dark:bg-brand/20 text-brand dark:text-brand-light text-xs font-semibold">Nativo</span>
                                 </div>
 
-                                <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between">
+                                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
                                     <div>
-                                        <h4 class="text-white font-bold text-base">Español</h4>
-                                        <p class="text-slate-400 text-xs">Competencia bilingüe o nativa</p>
+                                        <h4 class="text-slate-900 dark:text-white font-bold text-base">Español</h4>
+                                        <p class="text-slate-500 dark:text-slate-400 text-xs">Competencia bilingüe o nativa</p>
                                     </div>
-                                    <span class="px-2.5 py-1 rounded bg-brand/20 text-brand-light text-xs font-semibold">Nativo</span>
+                                    <span class="px-2.5 py-1 rounded bg-brand/15 dark:bg-brand/20 text-brand dark:text-brand-light text-xs font-semibold">Nativo</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Navegación inferior entre páginas -->
-                    <div class="pt-6 border-t border-slate-800 flex justify-between items-center">
-                        <button onclick="showPage('presentacion')" class="text-slate-400 hover:text-white text-sm font-medium flex items-center gap-2 transition-colors cursor-pointer">
+                    <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                        <button onclick="showPage('presentacion')" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium flex items-center gap-2 transition-colors cursor-pointer">
                             <i class="fa-solid fa-arrow-left"></i> Volver a 1. Presentación
                         </button>
-                        <button onclick="showPage('contactos')" class="text-brand-light hover:text-white text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer">
+                        <button onclick="showPage('contactos')" class="text-brand dark:text-brand-light hover:text-brand-dark dark:hover:text-white text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer">
                             Ir a 3. Contactos <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
@@ -599,34 +650,34 @@
                 
                 <!-- Section Header -->
                 <div class="text-center max-w-2xl mx-auto mb-12">
-                    <span class="text-brand-light text-xs font-semibold uppercase tracking-widest block mb-2">Página 3 · Comunicación Directa</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-                        <span class="text-brand-light font-serif italic">Contactos</span>
+                    <span class="text-brand dark:text-brand-light text-xs font-semibold uppercase tracking-widest block mb-2">Página 3 · Comunicación Directa</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+                        <span class="text-brand dark:text-brand-light font-serif italic">Contactos</span>
                     </h2>
-                    <p class="text-slate-400 text-sm sm:text-base mt-3">
+                    <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3">
                         Conecta directamente conmigo a través de LinkedIn, correo electrónico o teléfono para procesos de selección IT y colaboraciones profesionales.
                     </p>
                 </div>
 
                 <!-- Contact Card -->
-                <div class="bg-gradient-to-br from-slate-900 via-navy-800 to-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div class="bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-navy-800 dark:to-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl relative overflow-hidden">
                     <div class="space-y-5 relative z-10">
                         
                         <!-- 1. LinkedIn -->
-                        <a href="https://www.linkedin.com/in/mustaf%C3%A1-especialista-rrhh-it/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-5 p-5 rounded-2xl bg-slate-950/85 border border-slate-800 hover:border-blue-500/60 hover:bg-slate-900 transition-all duration-300 group">
+                        <a href="https://www.linkedin.com/in/mustaf%C3%A1-especialista-rrhh-it/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-5 p-5 rounded-2xl bg-white/90 dark:bg-slate-950/85 border border-slate-200 dark:border-slate-800 hover:border-blue-500/60 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 group">
                             <div class="w-14 h-14 rounded-2xl bg-[#0A66C2]/15 border border-[#0A66C2]/40 flex items-center justify-center text-[#0A66C2] text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <i class="fa-brands fa-linkedin"></i>
                             </div>
                             <div class="overflow-hidden">
-                                <p class="text-slate-400 text-xs font-semibold uppercase tracking-wider">LinkedIn</p>
-                                <p class="text-white font-bold text-base sm:text-lg break-all group-hover:text-brand-light transition-colors mt-0.5">
+                                <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">LinkedIn</p>
+                                <p class="text-slate-900 dark:text-white font-bold text-base sm:text-lg break-all group-hover:text-brand dark:group-hover:text-brand-light transition-colors mt-0.5">
                                     https://www.linkedin.com/in/mustaf%C3%A1-especialista-rrhh-it/
                                 </p>
                             </div>
                         </a>
 
                         <!-- 2. Gmail / Email -->
-                        <a href="mailto:chemlalmustafa1@gmail.com" class="flex items-center gap-5 p-5 rounded-2xl bg-slate-950/85 border border-slate-800 hover:border-red-500/60 hover:bg-slate-900 transition-all duration-300 group">
+                        <a href="mailto:chemlalmustafa1@gmail.com" class="flex items-center gap-5 p-5 rounded-2xl bg-white/90 dark:bg-slate-950/85 border border-slate-200 dark:border-slate-800 hover:border-red-500/60 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 group">
                             <div class="w-14 h-14 rounded-2xl bg-red-500/15 border border-red-500/40 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <!-- Logo oficial estilizado de Gmail -->
                                 <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -634,21 +685,21 @@
                                 </svg>
                             </div>
                             <div class="overflow-hidden">
-                                <p class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Gmail / Correo Electrónico</p>
-                                <p class="text-white font-bold text-base sm:text-lg truncate group-hover:text-red-400 transition-colors mt-0.5">
+                                <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Gmail / Correo Electrónico</p>
+                                <p class="text-slate-900 dark:text-white font-bold text-base sm:text-lg truncate group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors mt-0.5">
                                     chemlalmustafa1@gmail.com
                                 </p>
                             </div>
                         </a>
 
                         <!-- 3. Teléfono -->
-                        <a href="tel:+212663792370" class="flex items-center gap-5 p-5 rounded-2xl bg-slate-950/85 border border-slate-800 hover:border-emerald-500/60 hover:bg-slate-900 transition-all duration-300 group">
-                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                        <a href="tel:+212663792370" class="flex items-center gap-5 p-5 rounded-2xl bg-white/90 dark:bg-slate-950/85 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 group">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div class="overflow-hidden">
-                                <p class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Teléfono</p>
-                                <p class="text-white font-bold text-base sm:text-lg group-hover:text-emerald-400 transition-colors mt-0.5">
+                                <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Teléfono</p>
+                                <p class="text-slate-900 dark:text-white font-bold text-base sm:text-lg group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mt-0.5">
                                     +212663792370
                                 </p>
                             </div>
@@ -657,8 +708,8 @@
                     </div>
 
                     <!-- Botón Descarga CV también accesible desde Contactos -->
-                    <div class="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <button onclick="showPage('trayectoria')" class="text-slate-400 hover:text-white text-sm font-medium flex items-center gap-2 transition-colors cursor-pointer">
+                    <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <button onclick="showPage('trayectoria')" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-sm font-medium flex items-center gap-2 transition-colors cursor-pointer">
                             <i class="fa-solid fa-arrow-left"></i> Volver a 2. Trayectoria profesional
                         </button>
                         <a href="CV_Chemlal-Mustapha.pdf" download="CV_Chemlal-Mustapha.pdf" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 px-6 py-3 rounded-xl text-white font-semibold text-sm shadow-lg transition-all">
@@ -674,15 +725,15 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800/80 py-8">
+    <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800/80 py-8 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:justify-between sm:items-center">
-            <p class="text-slate-400 text-xs">
+            <p class="text-slate-500 dark:text-slate-400 text-xs">
                 &copy; <span id="currentYear"></span> Mustapha Chemlal — Técnico de Selección Senior IT.
             </p>
-            <div class="mt-4 sm:mt-0 flex justify-center space-x-6 text-slate-400 text-sm">
-                <button onclick="showPage('presentacion')" class="hover:text-white transition-colors cursor-pointer">1. Presentación</button>
-                <button onclick="showPage('trayectoria')" class="hover:text-white transition-colors cursor-pointer">2. Trayectoria profesional</button>
-                <button onclick="showPage('contactos')" class="hover:text-white transition-colors cursor-pointer">3. Contactos</button>
+            <div class="mt-4 sm:mt-0 flex justify-center space-x-6 text-slate-500 dark:text-slate-400 text-sm">
+                <button onclick="showPage('presentacion')" class="hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer">1. Presentación</button>
+                <button onclick="showPage('trayectoria')" class="hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer">2. Trayectoria profesional</button>
+                <button onclick="showPage('contactos')" class="hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer">3. Contactos</button>
             </div>
         </div>
     </footer>
@@ -690,6 +741,31 @@
     <script>
         // Set dynamic copyright year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Sincronizar iconos de Modo Oscuro / Modo Claro
+        function updateThemeUI(isDark) {
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+            const iconClass = isDark ? 'fa-solid fa-sun text-base' : 'fa-solid fa-moon text-base';
+            const mobileIconClass = isDark ? 'fa-solid fa-sun text-lg' : 'fa-solid fa-moon text-lg';
+
+            if (themeIcon) themeIcon.className = iconClass;
+            if (mobileThemeIcon) mobileThemeIcon.className = mobileIconClass;
+            if (themeToggleBtn) {
+                themeToggleBtn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+                themeToggleBtn.setAttribute('title', isDark ? 'Modo claro' : 'Modo oscuro');
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeUI(isDark);
+        }
+
+        updateThemeUI(document.documentElement.classList.contains('dark'));
 
         // Mobile Navigation Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -720,22 +796,22 @@
                 if (p === pageId) {
                     section.classList.remove('hidden');
                     if (navBtn) {
-                        navBtn.classList.add('text-white', 'bg-slate-800/80', 'border-brand/40', 'font-semibold');
-                        navBtn.classList.remove('text-slate-300', 'border-transparent', 'font-medium');
+                        navBtn.classList.add('text-slate-900', 'dark:text-white', 'bg-slate-200/80', 'dark:bg-slate-800/80', 'border-brand/40', 'font-semibold');
+                        navBtn.classList.remove('text-slate-600', 'dark:text-slate-300', 'border-transparent', 'font-medium');
                     }
                     if (mobBtn) {
-                        mobBtn.classList.add('text-white', 'bg-slate-800');
-                        mobBtn.classList.remove('text-slate-200');
+                        mobBtn.classList.add('text-slate-900', 'dark:text-white', 'bg-slate-200', 'dark:bg-slate-800');
+                        mobBtn.classList.remove('text-slate-700', 'dark:text-slate-200');
                     }
                 } else {
                     section.classList.add('hidden');
                     if (navBtn) {
-                        navBtn.classList.remove('text-white', 'bg-slate-800/80', 'border-brand/40', 'font-semibold');
-                        navBtn.classList.add('text-slate-300', 'border-transparent', 'font-medium');
+                        navBtn.classList.remove('text-slate-900', 'dark:text-white', 'bg-slate-200/80', 'dark:bg-slate-800/80', 'border-brand/40', 'font-semibold');
+                        navBtn.classList.add('text-slate-600', 'dark:text-slate-300', 'border-transparent', 'font-medium');
                     }
                     if (mobBtn) {
-                        mobBtn.classList.remove('text-white', 'bg-slate-800');
-                        mobBtn.classList.add('text-slate-200');
+                        mobBtn.classList.remove('text-slate-900', 'dark:text-white', 'bg-slate-200', 'dark:bg-slate-800');
+                        mobBtn.classList.add('text-slate-700', 'dark:text-slate-200');
                     }
                 }
             });
